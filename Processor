@@ -1,0 +1,77 @@
+package Assignment16;
+
+import java.util.*;
+import java.text.*;
+
+public class Processor {
+
+    public static void main(String[] args) {
+
+        BookList bookList = new BookList();
+        Scanner nhap = new Scanner(System.in);
+        int choice;
+        do {
+            System.out.println("-------------------------------");
+
+            System.out.println("MENU");
+            System.out.println("0.Exit");
+            System.out.println("1.Add new Book");
+            System.out.println("2.Update book by id");
+            System.out.println("3.Delete book by id");
+            System.out.println("4.Find book by id");
+            System.out.println("5.Display all books");
+            System.out.println("option:");
+            choice = nhap.nextInt();
+            nhap.nextLine();
+            switch (choice) {
+                case 1:
+                    System.out.println("-------------------------------");
+
+                    System.out.println("Enter type book(Text/Reference):");
+                    String type = nhap.nextLine();
+                    if (type.equalsIgnoreCase("Text")) {
+                        TextBook tb = new TextBook();
+                        bookList.addBook(tb);
+                    } else {
+                        if (type.equalsIgnoreCase("Reference")) {
+                            ReferenceBook rb = new ReferenceBook();
+                            bookList.addBook(rb);
+                        }
+                    }
+                    break;
+                case 2:
+                    System.out.println("-------------------------------");
+
+                    System.out.println("Enter idToUpdate");
+                    String idToUpdate = nhap.nextLine();
+                    bookList.updateBook(idToUpdate);
+                    break;
+                case 3:
+                    System.out.println("-------------------------------");
+
+                    System.out.println("Enter id to delete:");
+                    String idToDelete = nhap.nextLine();
+                    bookList.deleteBookById(idToDelete);
+                    break;
+                case 4:
+                    System.out.println("-------------------------------");
+
+                    System.out.println("Enter id to find :");
+                    String idToFind = nhap.nextLine();
+                    Book timKiem = bookList.findBookById(idToFind);
+                    if (timKiem != null) {
+                        timKiem.displayBook();
+                    } else {
+                        System.out.println("not found :" + idToFind);
+                    }
+                    break;
+                case 5:
+                    System.out.println("-------------------------------");
+                    bookList.displayBook();
+                    break;
+                default:
+                    System.out.println("Enter again");
+            }
+        } while (choice != 0);
+    }
+}
