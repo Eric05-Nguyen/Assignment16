@@ -1,0 +1,116 @@
+
+package Assignment16;
+import java.util.*;
+import java.text.*;
+
+public class Book implements IBook{
+private String bookId;
+private String publisher;
+private Date entryDate;
+private double unitPrice,quantity;
+Scanner nhap= new Scanner(System.in);
+SimpleDateFormat sdf= new SimpleDateFormat("dd/MM/yyyy");
+
+    public Book(String bookId, String publisher, Date entryDate, double unitPrice, double quantity) {
+        this.bookId = bookId;
+        this.publisher = publisher;
+        this.entryDate = entryDate;
+        this.unitPrice = unitPrice;
+        this.quantity = quantity;
+    }
+    public Book(){}
+
+    public String getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public Date getEntryDate() {
+        return entryDate;
+    }
+
+    public void setEntryDate(Date entryDate) {
+        this.entryDate = entryDate;
+    }
+
+    public double getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(double unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
+    }
+    
+    @Override
+    public void addBook() {
+        System.out.println("Enter book id:");
+        bookId=nhap.nextLine();
+        System.out.println("Enter publisher:");
+        publisher=nhap.nextLine();
+        entryDate=null;
+        while(entryDate==null){
+            try {
+                System.out.println("Enter date follow format(dd/MM/yyyy)");
+                String input=nhap.nextLine();
+                entryDate=sdf.parse(input);
+            } catch (Exception e) {
+                System.out.println("Enter again");
+            }
+        }
+        System.out.println("Enter unit Price:");
+        unitPrice=nhap.nextDouble();
+        System.out.println("Enter quantity:");
+        quantity=nhap.nextDouble();
+        nhap.nextLine();
+    }
+
+    @Override
+    public void updateBook(String id) {
+         System.out.println("Enter publisher:");
+        publisher=nhap.nextLine();
+        entryDate=null;
+        while(entryDate==null){
+            try {
+                System.out.println("Enter date follow format(dd/MM/yyyy)");
+                String input=nhap.nextLine();
+                entryDate=sdf.parse(input);
+            } catch (Exception e) {
+                System.out.println("Enter again");
+            }
+        }
+        System.out.println("Enter unit Price:");
+        unitPrice=nhap.nextDouble();
+        System.out.println("Enter quantity:");
+        quantity=nhap.nextDouble();
+        nhap.nextLine();
+    }
+
+    @Override
+    public void displayBook() {
+        System.out.println("Book id:"+bookId);
+        System.out.println("Publisher:"+publisher);
+        System.out.println("Entry date :"+sdf.format(entryDate));
+        System.out.println("Unit price :"+unitPrice);
+        System.out.println("Quantity:"+quantity);
+    }
+    
+}
