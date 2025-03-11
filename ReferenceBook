@@ -1,0 +1,43 @@
+
+package Assignment16;
+
+import java.util.*;
+import java.text.*;
+public class ReferenceBook extends Book{
+    private double tax;
+     Scanner nhap= new Scanner(System.in);
+    public ReferenceBook(String bookId,String publisher,Date entryDate ,double unitPrice,double quantity,double tax){
+        super(bookId,publisher,entryDate,unitPrice,quantity);
+        this.tax=tax;
+}
+    public ReferenceBook(){}
+
+    public double getTax() {
+        return tax;
+    }
+
+    public void setTax(double tax) {
+        this.tax = tax;
+    }
+    @Override
+    public void displayBook() {
+        super.displayBook();
+        System.out.println("Tax:"+tax);
+    }
+
+    @Override
+    public void updateBook(String id) {
+        super.updateBook(id);
+         System.out.println("Enter tax");
+        tax=nhap.nextDouble();
+    }
+
+    @Override
+    public void addBook() {
+        super.addBook();
+        System.out.println("Enter tax");
+        tax=nhap.nextDouble();
+    }
+    
+}
+
