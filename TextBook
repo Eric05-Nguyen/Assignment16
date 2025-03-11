@@ -1,0 +1,43 @@
+
+package Assignment16;
+import java.util.*;
+import java.text.*;
+
+public class TextBook extends Book{
+    private String status;
+    Scanner nhap= new Scanner(System.in);
+    public TextBook(String bookId,String publisher,Date entryDate ,double unitPrice,double quantity,String status){
+        super(bookId,publisher,entryDate,unitPrice,quantity);
+        this.status=status;
+    }
+    public TextBook(){}
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @Override
+    public void displayBook() {
+        super.displayBook();
+        System.out.println("Status:"+status);
+    }
+
+    @Override
+    public void updateBook(String id) {
+        super.updateBook(id);
+         System.out.println("Enter status");
+        status=nhap.nextLine();
+    }
+
+    @Override
+    public void addBook() {
+        super.addBook();
+        System.out.println("Enter status");
+        status=nhap.nextLine();
+    }
+    
+}
